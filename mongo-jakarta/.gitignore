@@ -41,3 +41,5 @@ nb-configuration.xml
 
 # Plugin directory
 /.quarkus/cli/plugins/
+
+mongo-jakarta/src/main/docker/data/*

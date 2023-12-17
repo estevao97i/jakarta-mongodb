@@ -1,6 +1,7 @@
 package org.estevao;
 
 import jakarta.inject.Inject;
+import jakarta.nosql.document.DocumentTemplate;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -16,13 +17,13 @@ import java.util.UUID;
 public class DeveloperResource {
 
     @Inject
-    DeveloperRepository repository;
+    DocumentTemplate documentTemplate;
 
     public record newDeveloper(String name, LocalDate birthday) {}
 
     @POST
     public Developer add(newDeveloper newDeveloper) {
-        return repository.save(new Developer(UUID.randomUUID().toString(),
+        return documentTemplate.insert(new Developer(UUID.randomUUID().toString(),
                 newDeveloper.name,
                 newDeveloper.birthday));
     }
